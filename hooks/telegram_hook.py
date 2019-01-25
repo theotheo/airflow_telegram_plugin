@@ -25,8 +25,7 @@ class TelegramHook(HttpHook):
             raise AirflowException('No Telegram chat_id supplied')
 
         proxy = extra.get('proxy', {})
-        if proxy:
-            self.proxy = {'https': proxy}
+        self.proxy = {'https': proxy}
 
         super().__init__(method='POST', http_conn_id=telegram_conn_id)
 
